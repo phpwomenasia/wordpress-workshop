@@ -21,7 +21,7 @@ Notes for Windows user:
 
 ### Other useful commands for Vagrant
 
-- To get inside the machine, run `vagrant ssh`
+- To access the machine, run `vagrant ssh`
 - To see the status of your vagrant box, run `vagrant global-status`. You should see something like this. *daab7d5* is your vagrant id number.
 
 ```
@@ -29,6 +29,7 @@ daab7d5  default virtualbox running  /path/to/phpwomen/Wordpress-Workshop/vagran
 ```
 
 - To power off the vagrant box, run `vagrant halt daab7d5` (`vagrant halt vagrant-id`)
+- To delete the vagrant box, run `vagrant destroy daab7d5` (`vagrant destroy vagrant-id`)
 
 ## WordPress Info
 
@@ -43,8 +44,6 @@ URL: [http://wordpress.local.com/wp-admin](http://wordpress.local.com/wp-admin)
 Username: `wp-user-workshop`
 
 Password: `password123`
-
-
 
 ## Theme
 
@@ -72,13 +71,33 @@ Database URL: [http://192.168.33.44:8888](http://192.168.33.44:8888)
 Username: `root`
 
 Password: `password123`
+
+## Additional Info
+
+### Vagrant access
+
+```
+Username: vagrant
+Password: vagrant
+```
+
+### SMTP Email
+
+```
+-- Gmail --
+Username: wpuserworkshop@gmail.com
+Password: password#123
+
+```
+
+### 
  
 
 # WordPress Workshop Info Part 2
 
 ## Plugins
 
-- WooCommerce. Download from WP Dashboard.
+- WooCommerce. Search and install from WP Dashboard.
 
 ## Products
 
