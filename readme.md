@@ -3,7 +3,7 @@
 ## WordPress Development using Vagrant
 
 1. Install Vagrant from [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) for both Mac and Windows user.
-1. Download `vagrant-wordpress.box` from [https://www.dropbox.com/s/398ilwuw95kmddm/Wordpress-Workshop.zip?dl=0](https://www.dropbox.com/s/398ilwuw95kmddm/Wordpress-Workshop.zip?dl=0) to your local folder, for example, inside `phpwomen` folder. Thanks Vanessa for provisioning it. You can learn more about Vagrant from her talk [here](engineers.sg link)
+1. Download `vagrant-wordpress.box` from [https://www.dropbox.com/s/398ilwuw95kmddm/Wordpress-Workshop.zip?dl=0](https://www.dropbox.com/s/398ilwuw95kmddm/Wordpress-Workshop.zip?dl=0) to your local folder, for example, inside `phpwomen` folder. Thanks Vanessa for provisioning it. You can learn more about Vagrant from her talk [here](https://engineers.sg/video/taming-your-dev-environment-with-vagrant-singapore-php-user-group--1130).
 1. Open Terminal `cd /path/to/phpwomen`
 1. Run `vagrant box add vagrant-wordpress vagrant-wordpress.box`
 1. `mkdir vagrant-wordpress`
@@ -52,7 +52,8 @@ North by SiteOrigin. Download from [https://siteorigin.com/theme/north/](https:/
 
 ## Plugins
 
-PageBuilder by SiteOrigin. [Download link](https://siteorigin.com/page-builder/)
+- PageBuilder by SiteOrigin. [Download link](https://siteorigin.com/page-builder/)
+- SiteOrigin Widgets Bundle. [Download link](https://wordpress.org/plugins/so-widgets-bundle/)
 
 ## Images
 
@@ -74,7 +75,7 @@ Password: `password123`
 
 ## Additional Info
 
-### Vagrant access
+### Vagrant SSH access
 
 ```
 Username: vagrant
@@ -113,3 +114,29 @@ Password: password#123
 - WooCommerce plugin page [link](https://wordpress.org/plugins/woocommerce/)
 - WooCommerce Shortcode [link](https://docs.woocommerce.com/document/woocommerce-shortcodes/)
 
+# Troubleshooting
+
+## 413 (Request Entity Too Large)
+
+If you experience this error, do these steps.
+
+1. First, `vagrant ssh` from Terminal. 
+1. Edit configuration by typing `sudo nano /etc/nginx/sites-available/wordpress`. You will see an editor.
+1. Add this line `client_max_body_size 5M;` within the `server` curly braces. Exit by pressing `Control+X` and yes to save it.
+1. Edit `php.ini` configuration by typing `sudo nano /etc/php5/fpm/php.ini`. In the editor, press `Control+W` to search for text "upload" and then press enter. Around there, you should see a line that contains `upload_max_filesize`. We need to increase it from the current 2M to let's say 10M. Exit and save it.
+1. Lastly, type `sudo service nginx restart` to restart Nginx service.
+
+
+Your `/etc/nginx/sites-available/wordpress` should now look like this:
+
+```
+server {
+        #listen   80; ## listen for ipv4; this line is default and implied
+        #listen   [::]:80 default ipv6only=on; ## listen for ipv6
+        listen                192.168.33.44:80;
+        server_name           wordpress.local.com;
+        client_max_body_size 5M;
+        
+        ...
+}
+```
