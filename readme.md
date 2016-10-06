@@ -29,7 +29,9 @@ daab7d5  default virtualbox running  /path/to/phpwomen/Wordpress-Workshop/vagran
 ```
 
 - To power off the vagrant box, run `vagrant halt daab7d5` (`vagrant halt vagrant-id`)
-- To delete the vagrant box, run `vagrant destroy daab7d5` (`vagrant destroy vagrant-id`)
+- To delete the vagrant box, run `vagrant destroy daab7d5` (`vagrant destroy vagrant-id`). Note that when you destroy the vagrant, it doesn't delete the virtualbox. 
+- To list your virtual box, run `vagrant box list`
+- To delete the virtual box, run `vagrant box remove vagrant-wordpress --provider virtualbox`. You will be prompted whether the box is safe to delete.
 
 ## WordPress Info
 
