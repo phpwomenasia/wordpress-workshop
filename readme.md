@@ -9,7 +9,7 @@
 1. `mkdir vagrant-wordpress`
 1. `cd vagrant-wordpress`
 1. `vagrant init vagrant-wordpress`
-1. `vi /etc/hosts` and add this line: `192.168.33.44	wordpress.local.com`
+1. `sudo nano /etc/hosts` and add this line: `192.168.33.44	wordpress.local.com`. You might be asked to enter your computer's password.
 1. Type `vagrant up`
 
 
